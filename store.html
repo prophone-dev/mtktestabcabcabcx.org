@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>ProSite Builder</title>        
+        <link href="/staticfiles/landing_page_gen/style.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/jpg" href="/staticfiles/landing_page_gen/prophone_favicon.png"/>
+       <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">   
+        <script src="https://kit.fontawesome.com/1bc484c802.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+        
+        
+    <script src="/staticfiles/landing_page_gen/seo_optimizations.js"></script>
+	<script src="/staticfiles/landing_page_gen/image_upload.js"></script>
+    <script src="/staticfiles/landing_page_gen/unsplash.js"></script>
+    <script src="/staticfiles/landing_page_gen/add_input.js"></script>
+    <script src="/staticfiles/landing_page_gen/send.js"></script>
+    <script src="/staticfiles/landing_page_gen/colors.js"></script>
+
+   
+    
+
+        <style>
+            
+            
+        </style>
+    </head>
+    
+   
+        
+
+<body class = "bg-light">
+
+
+
+<div class = "container-fluid">
+    
+           
+
+    
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="sendModal" tabindex="-1" role="dialog" aria-labelledby="sendModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Building your ProSite</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button> 
+            </div>
+        <div class="modal-body text-center">
+            <div id = "dynamic-main-modal-content">
+            
+            </div>
+            <div id = "dynamic-modal-content">
+            </div>
+            
+            <img style="height:16rem;" class="mx-auto" src="/staticfiles/landing_page_gen/prophone-load.gif" alt="loading gif" /> 
+        </div>
+    <div class="modal-footer">
+            <button style = "display:none;" type="button" id = "resubmit"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+        </div> 
+        </div>
+    </div>
+</div>
+
+    <div class = "row">
+
+        <form action="" id = "main-form" class= "col-sm-12 col-md-6 px-5">
+            <div hidden id="id-key" type="text" data-id="" data-prophone="" data-edit=""> </div>
+            <div style="display:none;" id="paid-url" data-paidurl=""> </div>
+            <div style="display:none;" id="github-repo" data-githubrepo=""> </div>
+            <div style="display:none;" id="slug" data-slug=""> </div>
+            
+            <div class = "box row rounded form-shadow bg-white shadow-md p-4 my-5">
+    <div class = "col-12 mb-3 text-center">
+        <h2> <bold> Basic Information </bold> </h2>
+    </div>
+    <div class="form-group col-12">
+        <label for="company-name">What is your company's name? <b>(required)</b></label>
+        <input type="text" name="company-name" required id="company-name" onchange = "update_alt_tags()" class="form-control"  placeholder="company name" aria-describedby="helpId">                  
+    </div>
+    <div class="form-group col-12">
+        <label for="company-industry">What is your industry? <b>(required)</b></label>
+        <input type="text" name="company-industry" required id="company-industry"  onchange = "update_alt_tags()" class="form-control"  placeholder="your industry" aria-describedby="helpId">    
+        <small class="form-text text-muted"> We use your industry to make sure your company ranks well for your craft on Google.</small>              
+    </div>
+
+
+    <div class="form-group col-12">
+        <label for="company-tagline">What is your company's tagline? <b>(required)</b> </label>
+        <input type="text" name="company-tagline"   required id="company-tagline" class="form-control" placeholder="What embodies your company values?" aria-describedby="helpId">
+
+    </div>
+
+    <div class="form-group col-12">
+        <label for="trait">Select a defining trait<b> (required)</b> </label>
+        <input class="form-control" list="trait" id='traits'   />
+            <datalist id="trait">
+                <option value='The best'>The best</option>
+                <option value='The finest'>The finest</option>
+                <option value='Expert'>Expert </option>
+                <option value='Customer first'>Customer first</option>                   
+                <option value='Quality'>Quality</option>
+                <option value='Quality'>Quality</option>
+                <option value='Military grade'>Military grade</option>
+            </datalist>
+        <small class="form-text text-muted">You can either choose a custom trait by typing in your own or use one of the options from the drop down. We use your company trait in your for Google Title for when customers search your company. We recommend keeping it to 1-2 words </small>
+    </div>
+
+    <div class="form-group col-12 pb-4">
+    <label for="number">What is your phone number? Please format your number as +1##########<b>(required)</b> </label>
+    <input type="text" name="number" id="number" required class="form-control" placeholder="Your phone number" aria-describedby="helpId">
+</div>
+</div>
+            <div class = "row rounded form-shadow bg-white shadow-md p-4 my-5" >    
+
+    <div class = " text-center col-12 mb-3">
+        <h2 class = "row" > <bold> Your Location </bold> </h2>
+        <h6 class = "row"> <b> <i> What areas do you serve? </b> </i> </h6>
+    </div>    
+
+    <div class="form-group col-12" id = "location" >
+       
+    
+        <div class = "row mb-2 service_areas " >
+            <div class = "col-4">
+            <label for="city">City / Town</label>
+            <input type="text" name="city" id="city" class=" city form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class = "col-4">
+            <label for="state">State </label>
+            <input type="text" name="state" id="state" class="col-4 state form-control" placeholder="" aria-describedby="helpId"> 
+            </div>
+            <div class = "col-2">
+            <br>
+            <button type = "button" id = "remove-location" class  = "btn btn-outline-danger mt-2" onclick = "remove_location(this)"> Remove </button> 
+            </div>
+        </div>                      
+
+    
+      
+
+
+    </div>
+
+        <button type = "button" id = "add-location" class  = "ml-3 mt-3 mb-3 col-4 btn btn-outline-dark" onclick = "add_location(); prefill_info() "> Add another location </button> 
+        <div class="col-6"> </div>
+        <div class="form-group col-4 border-top pt-4">
+        <label for="radius"> How many miles is your service area around your main city? </label>
+        <input type="text" name="radius" id="radius" class="form-control"  >
+    </div>
+</div> 
+                        <div class = "box row rounded form-shadow bg-white shadow-md p-4 my-5">
+            <div class = "col-12 mb-3 text-center">
+                <h2> <bold> Customize your site </bold> </h2>
+            </div>
+
+
+                <div class="form-group col-6 border-top pt-4">
+                <label for="custom-primary"> Add a custom primary color </label>
+                    <input type="text" name="custom-primary" id="custom-primary" class="form-control"  >
+                </div>
+                <div class="form-group col-6 border-top pt-4">
+                <label for="custom-secondary"> Add a custom secondary color </label>
+                    <input type="text" name="custom-secondary" id="custom-secondary" class="form-control"  >
+                </div>
+                <small class="form-text text-muted form-group col-12"> Please make sure you custom colors are in hex format e.g #FAF0EB. Note you cannot have custom colors and pre-selected colors other than black at the same time. If you choose to use custom colors, the pre-selected color will be ignored, with the exception of black if you would like to have a dark theme with your custom colors.  </small>
+
+
+                <h3 class="col-12  my-2 text-center"> <b> Or </b> </h3>
+
+
+                <div class="form-group col-5">
+                  <label for="color">Choose a main color for your site</label>
+                  <select class="form-control" name="color" id="color">
+                    <option  >gray</option>
+                    <option  >red</option>
+                    <option  >yellow</option>
+                    <option  >green</option>
+                    <option  >blue</option>
+                    <option  >indigo</option>
+                    <option  >purple</option>
+                    <option  >pink</option>
+                    <option  >black</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-5">
+                  <label for="shade"> Choose a shade 100 (light) - 900 (dark)</label>
+                  <select class="form-control" name="shade" id="shade">
+                    <option  >100</option>
+                    <option  >200</option>
+                    <option  >300</option>
+                    <option  >400</option>
+                    <option  >500</option>
+                    <option  >600</option>
+                    <option  >700</option>
+                    <option  >800</option>
+                    <option  >900</option>
+                  </select>
+                </div>
+
+                <div id = "color-1-preview" class = "col-2 form-group rounded  my-2 ">              
+                </div>
+                <div class="form-group col-5">
+                  <label for="secondary-color"> Choose a secondary color for your site</label>
+                  <select class="form-control" name="secondary-color" id="secondary-color">
+                    <option  >gray</option>
+                    <option  >red</option>
+                    <option  >yellow</option>
+                    <option  >green</option>
+                    <option  >blue</option>
+                    <option  >indigo</option>
+                    <option  >purple</option>
+                    <option  >pink</option>
+                    <option  >black</option>
+                  </select>
+                </div>
+                <div class="form-group col-5">
+                  <label for="secondary-shade"> Choose a shade 100 (light) - 900 (dark)</label>
+                  <select class="form-control" name="secondary-shade" id="secondary-shade">
+                    <option  >100</option>
+                    <option  >200</option>
+                    <option  >300</option>
+                    <option  >400</option>
+                    <option  >500</option>
+                    <option  >600</option>
+                    <option  >700</option>
+                    <option  >800</option>
+                    <option  >900</option>
+                  </select>
+                </div>
+                <div id = "color-2-preview" class = "col-2 form-group rounded my-2 ">              
+                </div>
+
+                <small class="form-text text-muted form-group col-12 border-bottom pb-4">We recommend keeping the difference between your main and secondary colors by 300 to 400 for best results. Default primary shade is 900 and secondary is 400  </small>
+
+
+                <div class="form-group col-12">
+                <label for="search">Choose a cover image <b>(required - or upload your own photo or video below)</b></label>
+                <input type="text" name="search" id="search" class="form-control" placeholder="Enter a relevant keyword about your business" aria-describedby="helpId">
+                <button type="button" class = "btn mt-2 btn-outline-info" id= "unsplash-search" onclick = "searchPhotos(1)"> Search to see images</button>
+                </div>
+
+                <div class ="unplash-scroll-container col-12">
+                    <div class = "row" id = "unsplash-result">
+                        
+                    </div>
+                </div>
+
+                <div class="form-group col-12">
+                    <label for="cover">Or upload a photo or video of your own - the higher the quality the better <b>(required - or choose photo above)</b></label>
+                    <input type="file" accept="image/*, video/*" onchange="loadFile(event, 'cover')" class="form-control-file" name="cover" id="cover" placeholder="" aria-describedby="fileHelpId">
+                    
+                    </div>
+                <div class = "col-12" id = "cover-wrapper">
+                    
+                                
+                </div>     
+
+                <div  style = "display:none" %}  class="form-group col-12">
+                <label for="hero-alt">Hero Image Alt Tag</b></label>
+                <input type="text" name="hero-alt" id="hero-alt"  class="form-control" aria-describedby="helpId">
+                </div>
+                
+
+                <div class="form-group col-12">
+                    <label for="logo">Upload a logo <b> (optional) </b> </label>
+                    <input type="file" accept="image/*" onchange="loadFile(event, 'logo')" class="form-control-file" name="logo" id="logo" placeholder="" aria-describedby="fileHelpId">
+                    
+                    </div>
+                <div class = "col-12" id = "logo-wrapper"> 
+                                 
+                </div>
+
+                <div   style = "display:none" %}  class="form-group col-12">
+                <label for="logo-alt">Logo Image Alt Tag</b></label>
+                <input type="text" name="logo-alt" id="logo-alt" class="form-control"  aria-describedby="helpId">
+                </div>  
+
+            </div>
+
+
+            <div class = "row rounded form-shadow bg-white shadow-md p-4 my-5">
+
+    <div class = "col-12 mb-3 text-center">
+        <h2> <bold> About Your Business </bold> </h2>
+    </div>        
+    
+
+    <label class = "col-12" for="attributes">Do any of the following apply to your business? <b> (optional)</b></label>
+    <div class="form-group col-12" id = "attributes">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="insured" value="insured" >
+            <label class="form-check-label" for="insured">Insured</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="bonded" value="bonded" >
+            <label class="form-check-label" for="bonded">Bonded</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="emergency" value="emergency" >
+            <label class="form-check-label" for="emergency">Emergency Services</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="veteran" value="veteran" >
+            <label class="form-check-label" for="veteran">Veteran Owned</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="family" value="family" >
+            <label class="form-check-label" for="family">Family Owned</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="local" value="local" >
+            <label class="form-check-label" for="local">Local Business</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="black_owned" value="black_owned" >
+            <label class="form-check-label" for="local">Black Owned Business</label>
+        </div>
+    </div>
+    <div class="form-group col-12">
+    <label for="license">If you have a license, what is your license number? <b> (optional) - If you have a license but don't want to include your number, you can write n/a below</b> </label>
+    <input type="text"  name="license" id="license" class="form-control" placeholder="" aria-describedby="helpId">
+    </div>
+
+    <hr>
+
+    <div class="form-group col-12">
+    <label for="about-us">Tell us a little bit about your business <b>(required)</b></label>
+    <textarea class="form-control" required placeholder = "E.g. Caro’s Landscaping and Lawn has been Toledo’s most trusted service for the past 15 years. We are a customer-first company and you are always a priority. Our team is professional, trained, and ready to take care of all your lawn care needs." name="about-us" id="about-us" rows="5"></textarea>
+    </div>
+
+    <div class="form-group col-12">
+        <label for="about">Upload a picture/video or yourself, family or team <b>(required)</b></label>
+        <input type="file"  accept="image/*, video/*" onchange="loadFile(event, 'about')" class="form-control-file" name="about" id="about" placeholder="" aria-describedby="fileHelpId">
+        
+        </div>
+    <div class = "col-12" id = "about-wrapper"> 
+                   
+    </div> 
+    
+
+    <div  style = "display:none" %}  class="form-group col-12">
+    <label for="about-alt">About Image Alt Tag</b></label>
+    <input type="text" name="about-alt" id="about-alt" class="form-control"  aria-describedby="helpId">
+    </div>
+</div>
+            <div class = "row rounded form-shadow bg-white shadow-md p-4 my-5">
+
+
+
+        <div class = "col-12 mb-3 text-center">
+            <h2> <bold>Add your Socials </bold> </h2>
+        </div>
+
+        <div class="form-group col-6">
+        <label for="facebook">Facebook <b>(optional)</b></label>
+        <input type="text" name="facebook" id="facebook" class="form-control" placeholder="Facebook URL" aria-describedby="helpId" >
+        </div>
+        <div class="form-group col-6">
+        <label for="twitter">Twitter <b>(optional)</b></label>
+        <input type="text" name="twitter" id="twitter" class="form-control" placeholder="Twitter URL" aria-describedby="helpId" >
+        </div>
+        <div class="form-group col-6">
+        <label for="instagram">Instagram <b>(optional)</b></label>
+        <input type="text" name="instagram" id="instagram" class="form-control" placeholder="Instagram URL" aria-describedby="helpId" >
+        </div>
+        <div class="form-group col-6">
+        <label for="google">Google <b>(optional)</b></label>
+        <input type="text" name="google" id="google" class="form-control" placeholder="Google Business URL" aria-describedby="helpId" >
+        </div>
+        <div class="form-group col-6">
+        <label for="snapchat">Snapchat <b>(optional)</b></label>
+        <input type="text" name="snapchat" id="snapchat" class="form-control" placeholder="Snapchat URL" aria-describedby="helpId" >
+        </div>
+        <div class="form-group col-6">
+        <label for="youtube">Youtube <b>(optional)</b></label>
+        <input type="text" name="youtube" id="youtube" class="form-control" placeholder="Youtube Channel URL" aria-describedby="helpId" >
+        </div>
+        <div class="form-group col-6">
+        <label for="thumbtack">Thumbtack <b>(optional)</b></label>
+        <input type="text" name="thumbtack" id="thumbtack" class="form-control" placeholder="Thumbtack URL" aria-describedby="helpId" >
+        </div>
+        <div class="form-group col-6">
+        <label for="yelp">Yelp <b>(optional)</b></label>
+        <input type="text" name="yelp" id="yelp" class="form-control" placeholder="Yelp URL" aria-describedby="helpId" >
+        </div>    
+        <div class="form-group col-6">
+        <label for="tiktok">TikTok <b>(optional)</b></label>
+        <input type="text" name="tiktok" id="tiktok" class="form-control" placeholder="TikTok URL" aria-describedby="helpId" >
+        </div>   
+        <div class="form-group col-12">
+        <label for="review-link">Add a link where people can leave a review - we recommended to click on leave a review on your FB or GMB page and grab the URL (Google, Facebook, or other) <b>(optional)</b> </label>
+        <input type="text" name="review-link" id="review-link" class="form-control" placeholder="Review Link URL" aria-describedby="helpId"  >
+        </div>   
+        <div class="form-group col-12">
+        <label for="review-link-more">Add a link where people can see more reviews (Google, Facebook, or other) <b>(optional)</b> </label>
+        <input type="text" name="review-link-more" id="review-link-more" class="form-control" placeholder="See more Reviews URL" aria-describedby="helpId"  >
+        </div>  
+
+        <div class="form-group col-12">
+        <label for="feature">Add a featured video <b>(optional)</b> </label>
+        <input type="text" name="feature" id="feature" class="form-control" placeholder="Featured Video URL" aria-describedby="helpId" >
+        </div> 
+    </div>
+
+            <div id = "services" class = "dynamic_components row rounded form-shadow bg-white shadow-md p-4 my-5">
+        <div class = "text-center col-12 mb-3">
+            <h2 class = "text-center"> <bold> What Services do you Offer? </bold> </h2> 
+            <h6 class = "text-center">  <b><i> (highly recommended)
+                </i> </b> </h6>
+        </div>
+        
+
+        <div class="form-group service col-12">
+            <label > <b> Display Order </b> </label>
+            <input   name="order" type = "number"  class = "form-control service-order mb-5"> 
+            <label>Service name</label>
+            <input type="text" name="service-name" class="form-control service-name" placeholder="E.g. Mulch Installation" aria-describedby="helpId">
+            <label>Service description</label>
+            <textarea class="form-control" placeholder="E.g. Mulch is used to help maintain the health of your landscape and adds a professional touch to any planter. It can be placed over soil to lock in moisture and improve soil conditions to encourage a healthier lawn. We provide a variety of professional mulching services." name="service-description" class = "service-description" id="about" rows="2"></textarea>
+            <button type='button' onclick = "setTimeout(function(){ update_services(); reorder('service-order') }, 300); " class = "remove btn btn-outline-danger mx-left mt-2 d-block" >Remove service</button>
+        </div>    
+              
+  
+
+</div>
+<button type='button' class = "btn btn-outline-dark mx-auto col-2 d-block mb-2" id = "add-service" onclick = "setTimeout(function(){reorder('service-order')}, 300)" >Add a service </button>
+
+            
+
+<div id="gallery-name" class = "dynamic_components row rounded form-shadow bg-white shadow-md p-4 my-5">
+    <div class = "col-12 mb-3 text-center mt-4">
+        <h2 class = "col-12"> <bold> Add Gallery Sections</bold> </h2> 
+        <small class="form-text text-muted">This is specifically for multipage sites. If you add a gallery you can assign photos below to them individually. If you do not add a gallery, the default gallery will appear</small>
+    </div>
+      
+</div>
+<button type='button'  onclick = "setTimeout(function(){ update_gallery_names() }, 300); " class = "btn btn-outline-dark mx-auto col-2 d-block mb-2" id = "add-gallery"> Add a Gallery</button>
+
+            <div class = "dynamic_components row rounded form-shadow bg-white shadow-md p-4 my-5">
+    <div class = "col-12 mb-3 text-center mt-4">
+        <h2 class = "col-12"> <bold> Showcase your best work </bold> </h2> 
+        <h6 class = "col-12"> <b> <i> (highly recommended) </i> </b> </h6>
+    </div>
+    <div class="form-group col-12">
+        <label for="gallery">Upload photos of your work - the higher the quality the better</label>
+        <input type="file" multiple accept="image/*, video/*" onchange="loadFile(event, 'gallery', this.files, '' )" class="form-control-file" name="gallery" id="gallery" placeholder="" aria-describedby="fileHelpId">
+    </div>
+
+
+
+    <div class ="col-12">
+        <div class = "row row-eq-height" id = "gallery-wrapper">
+            
+        </div>
+    </div>
+
+</div>
+            <div id = "testimonials" class = "dynamic_components row rounded form-shadow bg-white shadow-md p-4 my-5">
+    <div class = "col-12 mb-3 text-center ">
+        <h2 > <bold> Add Testimonials & Reviews </bold> </h2> 
+        <h6 > <b> <i> (highly recommended) </i> </b> </h6>
+    </div>
+    
+        <div class="form-group testimonial col-12">
+            <label>Who gave the review?</label>
+            <input type="text" name="reviewer" class="form-control reviewer" placeholder="" aria-describedby="helpId">
+            <label>What is their location? (City, State)</label>
+            <input type="text" name="title" class="form-control title" placeholder="Houston, TX" aria-describedby="helpId">
+            <label>What service did you perform?</label>
+            <select class="form-control testimonial-service-name" name="service">  
+            </select>                               
+            <label> How many stars did they give you out of 5?</label>
+            <input type="number" name="stars" min="1" max="5" value="5" class="form-control stars" aria-describedby="helpId">
+            <label> What did they say?</label>
+            <textarea class="form-control" name="review" class = "testimonial-description" rows="2"></textarea>
+            
+            <button type='button'  class = "remove btn btn-outline-danger mx-left mt-2 d-block" >Remove testimonial</button>
+        </div>    
+       
+    
+     
+</div>
+
+<button type='button' onclick = "setTimeout(function(){ update_services(); prefill() }, 300)" class = "btn btn-outline-dark mx-auto col-2 d-block mb-2" id = "add-testimonial">Add a testimonial </button>
+
+            <div id = "faqs" class = "dynamic_components rounded form-shadow bg-white shadow-md p-4 my-5">
+    <div class = "col-12 mb-3 text-center">
+        <h2 > <bold> Add Frequently Asked Questions </bold> </h2> 
+        <h6 > <b> <i> highly recommended </i> </b> </h6>
+    </div>
+      
+        <div class="form-group faq col-12 ">
+            <label > <b> Display Order </b> </label>
+            <input  name="order" type = "number"  class = "form-control faq-order">
+            <label>Question</label>
+            <input type="text" name="question" class="form-control question" placeholder="" aria-describedby="helpId">
+            <label> Answer</label>
+            <textarea class="form-control answer" name="answer"   rows="2"></textarea>
+            <button type='button' class = "remove btn btn-outline-danger mx-left mt-2 d-block" onclick = "setTimeout(function(){reorder('faq-order')}, 200)" >Remove FAQ</button>
+        </div>  
+       
+    
+</div> 
+<button type='button' class =  " btn btn-outline-dark mx-auto col-4 d-block " id = "add-faq" onclick = "setTimeout(function(){reorder('faq-order')}, 300)">Add an FAQ </button>     
+
+                      
+            <div class = "row rounded form-shadow bg-white shadow-md p-4 my-5">  
+    <div class = "text-center col-12 mb-3">
+        <h2 class = "row" > <bold> Add your business hours </bold> </h2>            
+    </div>
+
+    <div class="col-12 form-group business-hour">
+        <div class = "row business_hours">
+        <div class = "col-2"> <b> Monday </b> </div>
+        <div class="col-4"> <label class="text-grey ">Opening</label> <input class = "opening form-control" type="time"  value  = "08:00"  name="from"> </div>
+        <div class="col-4"> <label class="text-grey ">Closing</label> <input class = "closing form-control" type="time"  value  = "18:00"  name="to"> </div>
+        </div>
+    </div>
+    <div class="col-12 form-group business-hour">
+        <div class = "row business_hours">
+        <div class = "col-2"> <b> Tuesday </b> </div>
+        <div class="col-4"> <label class="text-grey ">Opening</label> <input class = "opening form-control" type="time"  value  = "08:00"  name="from"> </div>
+        <div class="col-4"> <label class="text-grey ">Closing</label> <input class = "closing form-control" type="time"  value  = "18:00"  name="to"> </div>
+        </div>
+    </div>
+    <div class="col-12 form-group business-hour">
+        <div class = "row business_hours">
+        <div class = "col-2"> <b> Wednesday </b> </div>
+        <div class="col-4"> <label class="text-grey ">Opening</label> <input class = "opening form-control" type="time"  value  = "08:00"  name="from"> </div>
+        <div class="col-4"> <label class="text-grey ">Closing</label> <input class = "closing form-control" type="time"  value  = "18:00"  name="to"> </div>
+        </div>
+    </div>
+    <div class="col-12 form-group business-hour">
+        <div class = "row business_hours">
+        <div class = "col-2"> <b> Thursday </b> </div>
+        <div class="col-4"> <label class="text-grey ">Opening</label> <input class = "opening form-control" type="time"  value  = "08:00"  name="from"> </div>
+        <div class="col-4"> <label class="text-grey ">Closing</label> <input class = "closing form-control" type="time"  value  = "18:00"  name="to"> </div>
+        </div>
+    </div>
+    <div class="col-12 form-group business-hour">
+        <div class = "row business_hours">
+        <div class = "col-2"> <b> Friday </b> </div>
+        <div class="col-4"> <label class="text-grey ">Opening</label> <input class = "opening form-control" type="time"  value  = "08:00"  name="from"> </div>
+        <div class="col-4"> <label class="text-grey ">Closing</label> <input class = "closing form-control" type="time"  value  = "18:00"  name="to"> </div>
+        </div>
+    </div>
+    <div class="col-12 form-group business-hour">
+        <div class = "row business_hours">
+        <div class = "col-2"> <b> Saturday </b> </div>
+        <div class="col-4"> <label class="text-grey ">Opening</label> <input class = "opening form-control" type="time"  name="from"> </div>
+        <div class="col-4"> <label class="text-grey ">Closing</label> <input class = "closing form-control" type="time"    name="to"> </div>
+        </div>
+    </div>
+    <div class="col-12 form-group business-hour">
+        <div class = "row business_hours">
+        <div class = "col-2"> <b> Sunday </b> </div>
+        <div class="col-4"> <label class="text-grey ">Opening</label> <input class = "opening form-control" type="time"    name="from"> </div>
+        <div class="col-4"> <label class="text-grey ">Closing</label> <input class = "closing form-control" type="time"   name="to"> </div>
+        </div>
+    </div>
+</div>
+      
+
+
+           
+            
+
+            
+            <button type = "button" data-toggle="modal" data-target="#sendModal" class = "submit mx-auto d-block btn btn-outline-dark">  Make it!  </button>
+            
+            
+
+
+
+        </form> 
+
+        
+        <div class = "col-6 mt-5">
+
+        
+            <img class = "img-fluid mh-100"  src="/staticfiles/landing_page_gen/updated.png" alt="template find us"/>
+        
+    </div>
+    </div>
+ 
+
+   
+           
+
+ </div>
+
+</body>
+
+       
+    
+</html>
